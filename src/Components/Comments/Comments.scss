@@ -1,0 +1,61 @@
+.Comments {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  width: 55rem;
+
+  .left {
+    img {
+      cursor: pointer;
+    }
+  }
+  .right {
+    .userNameAndDate {
+      display: flex;
+      gap: 5px;
+
+      :first-child {
+        font-weight: 500;
+        color: black;
+      }
+      :last-child {
+        color: #7E7E7E;
+      }
+      > p {
+        margin: 0;
+        font-size: 15px;
+      }
+    }
+    .comment-text {
+      > p {
+        margin: 10px 0;
+        color: #26130f;
+        white-space: pre-line;
+      }
+    }
+    .likesCount {
+      display: flex;
+      gap: 20px;
+
+      > p {
+        margin: 0;
+        color: lightgray;
+      }
+    }
+  }
+
+  &.dark {
+    .right {
+      .userNameAndDate {
+        :first-child {
+          color: white;
+        }
+      }
+      .comment-text {
+        p {
+          color: white;
+        }
+      }
+    }
+  }
+}

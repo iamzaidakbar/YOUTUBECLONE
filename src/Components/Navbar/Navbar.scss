@@ -1,0 +1,144 @@
+.navbar {
+  width: 100%;
+  height: 65px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 2;
+  transition: all 0.5s ease;
+
+  .left {
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 22px;
+      height: 17px;
+      cursor: pointer;
+
+      span {
+        width: 100%;
+        height: 1px;
+        background-color: black;
+        transform-origin: left;
+        transition: all 0.1s ease;
+      }
+    }
+
+    .ytLogo {
+      display: flex;
+      margin: 0 20px;
+      align-items: center;
+      cursor: pointer;
+
+      .logo-text {
+        color: black;
+        font-weight: bold;
+        font-size: 1.5rem;
+        letter-spacing: -2px;
+        margin-left: 2px;
+      }
+    }
+  }
+
+  .center {
+    .search-bar {
+      display: flex;
+      transition: all 1s ease;
+
+      .search-input {
+        width: 500px;
+        font-size: 20px;
+        border: 1px solid silver;
+        border-right: none;
+        border-radius: 50px 0 0 50px;
+        background-color: white;
+        padding: 0 20px;
+        color: black;
+      }
+
+      .search-input:focus {
+        outline: none;
+      }
+
+      .search-icon {
+        color: black;
+        font-size: 20px;
+        padding: 13px 20px;
+        border: 1px solid silver;
+        border-radius: 0 50px 50px 0;
+        background-color: #FAFCFF;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    gap: 20px;
+    margin-right: 25px;
+    cursor: pointer;
+    transition: all 1s ease;
+
+  }
+
+  &.dark {
+    background-color: #0E0F0F;
+
+    .left {
+      .hamburger {
+        span {
+          background-color: white;
+        }
+      }
+
+      .ytLogo {
+        .logo-text {
+          color: white;
+        }
+      }
+    }
+
+    .center {
+      .search-bar {
+        .search-input {
+          border: 1px solid #303030;
+          background-color: #101011;
+          border-right: none;
+          color: white;
+        }
+
+        .search-icon {
+          color: darkgray;
+          border: 1px solid #303030;
+          background-color: #101011;
+        }
+      }
+    }
+
+  }
+
+  &.active {
+    .left {
+      .hamburger {
+        :nth-child(2) {
+          display: none;
+        }
+
+        :first-child {
+          transform: rotate(45deg);
+        }
+
+        :last-child {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}

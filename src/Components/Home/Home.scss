@@ -1,0 +1,71 @@
+.Home {
+  position: relative;
+  top: 40px;
+  left: 6vw;
+  width: 90.4vw;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  background-color: white;
+
+  .upper-section {
+    width: 91vw;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    padding: 17px 0;
+    background-color: white;
+    transition: all 0.5s ease;
+    z-index: 2;
+
+    .shortLinks-btn {
+      padding: 8px 13px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 16px;
+      background-color: #f2f2f2;
+      color: black;
+      margin-right: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .shortLinks-btn:hover {
+      background-color: #E6E2E2;
+    }
+    .shortLinks-btn:focus {
+      background-color: black;
+      color: white;
+    }
+  }
+
+  .lower-section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  &.dark {
+    background-color: #0a0a0b ;
+    .upper-section {
+      background-color: #0a0a0b;
+
+      .shortLinks-btn {
+        background-color: #303030;
+        color: white;
+      }
+      .shortLinks-btn:hover {
+        background-color: #555555;
+      }
+      .shortLinks-btn:focus {
+        background-color: white;
+        color: black;
+      }
+    }
+  }
+
+  &.active {
+    left: calc(100vw - 85vw);
+    width: 80.4vw;
+  }
+}

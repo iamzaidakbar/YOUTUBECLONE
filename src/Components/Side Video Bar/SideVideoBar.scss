@@ -1,0 +1,37 @@
+.shortVideoCard {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+
+  .thumbnail-wrapper {
+    .VideoCard-img {
+      border-radius: 13px;
+    }
+  }
+
+  .VideoCard-details {
+    .VideoCard-description {
+      margin: 0;
+      font-weight: 500;
+      color: black;
+    }
+    .VideoCard-channel-name {
+      margin: 10px 0 0;
+      font-size: 14px;
+      color: #555555;
+    }
+  }
+
+  &.dark {
+    .VideoCard-details {
+      .VideoCard-description {
+        color: white;
+      }
+      .VideoCard-channel-name {
+        color: #7E7E7E;
+      }
+    }
+  }
+}

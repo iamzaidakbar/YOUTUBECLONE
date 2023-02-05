@@ -1,0 +1,92 @@
+.VideoCard {
+  margin-top: 4rem;
+  width: 325px;
+  margin-right: 17px;
+
+ .thumbnail-wrapper {
+   height: 190px;
+   width: 320px;
+   overflow: hidden;
+   border-radius: 17px;
+   position: relative;
+
+   .VideoCard-img {
+     transform: scaleY(1.4);
+     filter: contrast(1.1);
+
+     &.channel {
+       border-radius: 50%;
+       transform: scaleY(1);
+       width: 200px;
+       margin-left: 40px;
+     }
+   }
+
+   .thumbnail-text {
+     position: absolute;
+     right: 10px;
+     bottom: -5px;
+     background-color: black;
+     color: white;
+     padding: 3px 5px;
+     font-size: 12px;
+     font-weight: 500;
+     display:none
+   }
+ }
+  .thumbnail-wrapper:hover .thumbnail-text{
+    display:block;
+  }
+
+  .VideoCard-details{
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 15px;
+
+    .channel-info {
+      .VideoCard-description {
+        margin: 0;
+        font-weight: 600;
+        padding-right: 10px;
+        color: black;
+      }
+      .VideoCard-channel-name {
+        color: #7E7E7E;
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
+      .video-views {
+        display: flex;
+        gap: 10px;
+
+        > * {
+          margin: 0;
+          color: #7E7E7E;
+          font-size: 15px;
+
+        }
+      }
+    }
+  }
+
+  &.dark {
+    .VideoCard-details {
+      .channel-info {
+        .VideoCard-description {
+          color: white;
+        }
+      }
+    }
+  }
+
+  &.active {
+    width: 296px;
+    margin-right: 0;
+
+    .thumbnail-wrapper {
+      height: 160px;
+      width: 275px;
+    }
+  }
+}

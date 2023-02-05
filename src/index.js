@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Navbar from "./Components/Navbar/Navbar";
+import YTStates from "./context/YTStates";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <YTStates>
+          <App />
+      </YTStates>
   </React.StrictMode>
 );
 
