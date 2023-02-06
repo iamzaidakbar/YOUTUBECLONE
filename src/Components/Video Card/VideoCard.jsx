@@ -10,15 +10,20 @@ export default function VideoCard(props) {
 		randomNum,
 		setVideoID,
 		setMenuState,
-		fetchVideoById, convertDate, fetchUserComments} = context
+		fetchVideoById,
+		convertDate,
+		fetchUserComments,
+		setVideoId
+	} = context
 
 	const dateString = props.publishedAt
 	const date = new Date(dateString)
-    let dateNew = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`
-
+    let dateNew = `${date.getFullYear()}-${date.getMonth() === 0 ? date.getMonth() + 1 : date.getMonth()}-${date.getDay() === 0 ? date.getDay() + 1 : date.getDay()}`
+	console.log(dateNew)
 	function passDate() {
 		setMenuState(false)
 		setVideoID(props.data?.id?.videoId)
+		setVideoId(props?.data?.id?.videoId)
 		fetchVideoById(props?.data?.id?.videoId)
 		fetchUserComments(props?.data?.id?.videoId)
 	}

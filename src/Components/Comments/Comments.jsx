@@ -6,7 +6,11 @@ import ytContext from "../../context/ytContext";
 export default function Comments(props) {
 
 	const context = useContext(ytContext);
-	const {darkMode} = context
+	const {darkMode,convertDate} = context
+
+	const dateString = props.publishedAt
+	const date = new Date(dateString)
+	let dateNew = `${date.getFullYear()}-${date.getMonth() === 0 ? date.getMonth() + 1 : date.getMonth()}-${date.getDay() === 0 ? date.getDay() + 1 : date.getDay()}`
 
 	return <div className={"Comments " + (darkMode && " dark ")}>
 		<div className="left">
@@ -15,7 +19,7 @@ export default function Comments(props) {
 		<div className="right">
 			<div className="userNameAndDate">
 				<p>@{props.authorDisplayName.toString().split(' ')}</p>
-				<p>5 months ago</p>
+				<p>{convertDate(dateNew)}</p>
 			</div>
 			<div className="comment-text">
 				<p>{props.textDisplay}</p>

@@ -17,7 +17,7 @@ export default function SideVideoBar(props) {
 	return <div className={"shortVideoCard " + (darkMode && "dark ")}>
 		<div className="thumbnail-wrapper">
 			<Link onClick={passDate} to={'/watch/' + props.data?.id?.videoId}>
-				<img className="VideoCard-img" src={props.thumbnail} width={155} height={80} alt=""/>
+				<img className="VideoCard-img" src={props.thumbnail} alt=""/>
 			</Link>
 		</div>
 		<div className="VideoCard-details">

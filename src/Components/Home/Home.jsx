@@ -30,7 +30,6 @@ export default function Home() {
 		</div>
 		<div className="lower-section">
 			{ytVideos.map(data => {
-				console.log(data)
 				return <VideoCard
 					data={data}
 					key={data?.id?.videoId}

@@ -1,35 +1,39 @@
 import './WatchVideo.scss'
-import YouTube from 'react-youtube';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faThumbsDown, faThumbsUp} from "@fortawesome/free-solid-svg-icons";
-import {useContext,useState} from "react";
+import {useContext, useState} from "react";
 import ytContext from "../../context/ytContext";
 import SideVideoBar from "../Side Video Bar/SideVideoBar";
 import Comments from "../Comments/Comments";
-import InfiniteScroll from "react-infinite-scroll-component";
+import ReactPlayer from "react-player";
 
 export default function WatchVideo() {
 	const [showMore, setShowMore] = useState(false);
 
 	const context = useContext(ytContext);
-	const {darkMode, menuState, userVideo, ytVideos, randomNum, convertDate, comments,fetchUserComments,setPageSize} = context
+	const {darkMode, menuState, userVideo, ytVideos, videoId, randomNum, convertDate, comments} = context
 
 	const dateString = userVideo[0]?.snippet?.publishedAt
 	const date = new Date(dateString)
-	let dateNew = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`
+	let dateNew = `${date.getFullYear()}-${date.getMonth() === 0 ? date.getMonth() + 1 : date.getMonth()}-${date.getDay() === 0 ? date.getDay() + 1 : date.getDay()}`
 
-	const opts = {
-		height: '500', width: '900', playerVars: {
-			autoplay: 1,
-		},
-	};
 
 	return <div className={"WatchVideo " + (darkMode && "dark ") + (menuState && " active ")}>
 		<div className="left-wrapper">
 			<div className="video-player">
-				{userVideo[0]?.id && <YouTube
-					videoId={userVideo[0]?.id}
-					opts={opts}
+				{videoId && <ReactPlayer
+					key={`https://www.youtube.com/watch?v=` + videoId}
+					url={`https://www.youtube.com/watch?v=` + videoId}
+					width={900}
+					height={500}
+					controls={true}
+					playing={true}
+					config={{
+				  youtube: {
+					  playerVars : {showInfo: 1},
+				  }
+				}
+					}
 				/>}
 			</div>
 			<div className="video-title">
@@ -71,7 +75,8 @@ export default function WatchVideo() {
 				   comments &&
 		           comments.map(data => {
 					   return <Comments
-						   key={data.id}
+						   key={data?.id}
+						   publishedAt={data?.snippet?.topLevelComment?.snippet?.publishedAt}
 						   authorProfileImageUrl={data?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl}
 						   authorDisplayName={data?.snippet?.topLevelComment?.snippet?.authorDisplayName}
 						   textDisplay={data?.snippet?.topLevelComment?.snippet?.textOriginal}

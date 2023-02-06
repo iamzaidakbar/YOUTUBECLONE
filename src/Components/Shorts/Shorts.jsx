@@ -1,4 +1,3 @@
-import Comments from "../Comments/Comments";
 
 export default function Shorts() {
 	return <div className="Shorts">
