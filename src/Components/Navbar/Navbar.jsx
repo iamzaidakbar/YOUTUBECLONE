@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBell, faMoon, faSearch, faSun} from "@fortawesome/free-solid-svg-icons";
 import {useContext} from "react";
 import ytContext from "../../context/ytContext";
+import {Link} from "react-router-dom";
 
 export default function Navbar() {
 
@@ -14,7 +15,7 @@ export default function Navbar() {
 		setQuery(e.target.value)
 	}
 
-	function handleClick(e) {
+	function Submit(e) {
 		e.preventDefault()
 		fetchVideos(query)
 	}
@@ -30,15 +31,19 @@ export default function Navbar() {
 				<span></span>
 			</div>
 			<div className="ytLogo">
-				<FaYoutube size={35} className="yt" color={'red'}/>
-				<div className="logo-text">YouTube</div>
+				<Link className="nav-link" to={'/'}>
+					<FaYoutube size={35} className="yt" color={'red'}/>
+					<div className="logo-text">YouTube</div>
+				</Link>
 			</div>
 		</div>
 
 		<div className="center">
 			<div className="search-bar">
-				<input onChange={handleChange} value={query} className="search-input" type="text" placeholder="Search"/>
-				<FontAwesomeIcon onClick={handleClick} className="search-icon" icon={faSearch}/>
+				<form onSubmit={Submit}>
+					<input onChange={handleChange} value={query} className="search-input" type="text" placeholder="Search"/>
+					<FontAwesomeIcon onClick={Submit} className="search-icon" icon={faSearch}/>
+				</form>
 			</div>
 		</div>
 		<div className="right">

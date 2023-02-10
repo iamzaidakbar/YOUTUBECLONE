@@ -9,7 +9,7 @@
   background-color: white;
 
   .upper-section {
-    width: 91vw;
+    width: 100%;
     position: fixed;
     display: flex;
     align-items: center;
@@ -30,9 +30,11 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
+
     .shortLinks-btn:hover {
       background-color: #E6E2E2;
     }
+
     .shortLinks-btn:focus {
       background-color: black;
       color: white;
@@ -46,7 +48,8 @@
   }
 
   &.dark {
-    background-color: #0a0a0b ;
+    background-color: #0a0a0b;
+
     .upper-section {
       background-color: #0a0a0b;
 
@@ -54,9 +57,11 @@
         background-color: #303030;
         color: white;
       }
+
       .shortLinks-btn:hover {
         background-color: #555555;
       }
+
       .shortLinks-btn:focus {
         background-color: white;
         color: black;
@@ -66,6 +71,6 @@
 
   &.active {
     left: calc(100vw - 85vw);
-    width: 80.4vw;
+    width: 80.6vw;
   }
 }

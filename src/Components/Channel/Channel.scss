@@ -1,0 +1,164 @@
+.Channel {
+  position: relative;
+  height: 100vh;
+  width: 93.4vw;
+  top: 65px;
+  left: 100px;
+
+  .channel-thumbnail {
+    height: 200px;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .channel-actions {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+
+    .logoAndInfo {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      flex: 4;
+
+      .subs {
+        :first-child {
+          font-weight: 500;
+          font-size: 23px;
+          margin-bottom: 4px;
+        }
+
+        :nth-child(2) {
+          font-size: 17px;
+          color: #555555;
+        }
+
+        :last-child {
+          font-size: 18px;
+          color: #555555;
+        }
+
+        > * {
+          margin: 0;
+        }
+      }
+    }
+
+    .sub-btn {
+      button {
+        font-size: 17px;
+        font-weight: 500;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 18px;
+        background-color: black;
+        color: white;
+        margin-right: 25px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .about {
+    display: flex;
+    padding: 15px;
+    gap: 100px;
+
+    .description {
+      flex: 7;
+
+      :first-child {
+        font-weight: 600;
+        color: #26130f;
+        margin: 0 0 20px;
+        font-size: 18px;
+      }
+
+      :last-child {
+        white-space: pre-line;
+        font-weight: 500;
+        color: #26130f;
+      }
+
+    }
+
+    .stats {
+      flex: 3;
+
+      :first-child {
+        font-weight: 600;
+        color: #26130f;
+        margin: 0 0 20px;
+        font-size: 18px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid lightgray;
+      }
+
+      :nth-child(2) {
+        font-weight: 500;
+        padding-bottom: 15px;
+        border-bottom: 1px solid lightgray;
+      }
+
+      :last-child {
+        font-weight: 500;
+        padding-bottom: 15px;
+        border-bottom: 1px solid lightgray;
+      }
+    }
+  }
+
+  &.active {
+    left: 237px;
+    width: 84.4vw;
+  }
+
+  &.dark {
+    .channel-actions {
+      .logoAndInfo {
+        .subs {
+          :first-child {
+            color: white;
+          }
+
+          :nth-child(2) {
+            color: #B9B7B7;
+          }
+
+          :last-child {
+            color: #B9B7B7;
+          }
+        }
+      }
+
+      .sub-btn {
+        button {
+          background-color: white;
+          color: black;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .about {
+      .description {
+        > * {
+          color: white;
+          font-weight: 400;
+        }
+      }
+
+      .stats {
+        > * {
+          color: white;
+          font-weight: 400;
+          border-bottom: 1px solid #303030;
+        }
+      }
+    }
+  }
+}

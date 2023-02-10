@@ -16,17 +16,20 @@
       transform: scaleY(1.4);
     }
   }
+
   .thumbnail-wrapper::-webkit-scrollbar {
     display: none;
   }
 
   .VideoCard-details {
     flex: 7;
+
     .VideoCard-description {
       margin: 0;
       font-weight: 500;
       color: black;
     }
+
     .VideoCard-channel-name {
       margin: 10px 0 0;
       font-size: 14px;
@@ -39,6 +42,7 @@
       .VideoCard-description {
         color: white;
       }
+
       .VideoCard-channel-name {
         color: #7E7E7E;
       }

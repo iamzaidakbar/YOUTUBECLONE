@@ -32,10 +32,13 @@
     }
 
     .ytLogo {
-      display: flex;
-      margin: 0 20px;
-      align-items: center;
-      cursor: pointer;
+     .nav-link {
+       text-decoration: none;
+       display: flex;
+       margin: 0 20px;
+       align-items: center;
+       cursor: pointer;
+     }
 
       .logo-text {
         color: black;
@@ -49,8 +52,10 @@
 
   .center {
     .search-bar {
-      display: flex;
-      transition: all 1s ease;
+      form {
+        display: flex;
+        transition: all 1s ease;
+      }
 
       .search-input {
         width: 500px;

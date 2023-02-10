@@ -4,10 +4,18 @@ import ytContext from "../../context/ytContext";
 import VideoCard from "../Video Card/VideoCard";
 
 export default function Home() {
+
+	// Context Api
 	const context = useContext(ytContext);
-	const {darkMode, shortLinks, menuState, fetchVideos, ytVideos} = context
+	const {
+		fetchVideos,
+		shortLinks,
+		menuState,
+		darkMode,
+		ytVideos,
+	} = context
 
-
+	// Fetches the video and reels before loading the page
 	useEffect(() => {
 		return () => {
 			fetchVideos('trailers')
@@ -15,6 +23,8 @@ export default function Home() {
 		// eslint-disable-next-line
 	}, []);
 
+
+	// Generated the random id
 	function generateId() {
 		return Math.random().toString(36).substr(2, 9);
 	}
@@ -29,7 +39,7 @@ export default function Home() {
 			})}
 		</div>
 		<div className="lower-section">
-			{ytVideos.map(data => {
+			{ytVideos && ytVideos.map(data => {
 				return <VideoCard
 					data={data}
 					key={data?.id?.videoId}

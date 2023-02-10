@@ -3,10 +3,11 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faThumbsUp} from "@fortawesome/free-solid-svg-icons";
 import {useContext} from "react";
 import ytContext from "../../context/ytContext";
+
 export default function Comments(props) {
 
 	const context = useContext(ytContext);
-	const {darkMode,convertDate} = context
+	const {darkMode, convertDate} = context
 
 	const dateString = props.publishedAt
 	const date = new Date(dateString)
@@ -14,7 +15,10 @@ export default function Comments(props) {
 
 	return <div className={"Comments " + (darkMode && " dark ")}>
 		<div className="left">
-			<img style={{borderRadius:"50%"}} src={props.authorProfileImageUrl} width={50} height={50} alt=""/>
+			{props.authorProfileImageUrl && <img style={{borderRadius: "50%"}}
+			                                     src={props.authorProfileImageUrl ? props.authorProfileImageUrl : props.default_img}
+			                                     width={50}
+			                                     height={50} alt=""/>}
 		</div>
 		<div className="right">
 			<div className="userNameAndDate">
@@ -25,7 +29,8 @@ export default function Comments(props) {
 				<p>{props.textDisplay}</p>
 			</div>
 			<div className="likesCount">
-				<p><FontAwesomeIcon style={{marginRight:"7px"}} size={'xl'} color={'gray'} icon={faThumbsUp}/> {props.likeCount}</p>
+				<p><FontAwesomeIcon style={{marginRight: "7px"}} size={'xl'} color={'gray'}
+				                    icon={faThumbsUp}/> {props.likeCount}</p>
 			</div>
 		</div>
 	</div>
