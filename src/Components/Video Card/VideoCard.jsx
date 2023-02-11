@@ -2,8 +2,11 @@ import './VideoCard.scss'
 import {useContext} from "react";
 import ytContext from "../../context/ytContext";
 import {Link} from "react-router-dom";
+import {ADD} from "../../actions";
+import {useDispatch} from "react-redux";
 
 export default function VideoCard(props) {
+	const dispatch = useDispatch()
 
 	const context = useContext(ytContext);
 	const {
@@ -19,8 +22,10 @@ export default function VideoCard(props) {
 
 
 	return <div className={"VideoCard " + (darkMode && "dark ") + (menuState && " active")}>
-		<div className="thumbnail-wrapper">
-			<Link to={'/watch/' + props.data?.id?.videoId}>
+		<div onClick={() => {
+			dispatch(ADD(props.data))
+		}} className="thumbnail-wrapper">
+			<Link to={'/watch/' + props.data?.id?.videoId} state={{data: props.data}}>
 				<img className={"VideoCard-img " + (props.channel === "youtube#channel" && "channel")}
 				     src={props.thumbnail} width={menuState ? 275 : 320} height={menuState ? 160 : 190} alt=""/>
 				<p className="thumbnail-text">Click to play</p>

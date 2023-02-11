@@ -17,9 +17,11 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-intersection-observer": "^9.4.1",
     "react-player": "^2.11.0",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.0",
     "react-scripts": "5.0.1",
     "react-youtube": "^10.1.0",
+    "redux": "^4.2.1",
     "scss": "^0.2.4",
     "web-vitals": "^2.1.4"
   },

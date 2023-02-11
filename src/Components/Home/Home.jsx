@@ -2,6 +2,7 @@ import './Home.scss'
 import {useContext, useEffect} from "react";
 import ytContext from "../../context/ytContext";
 import VideoCard from "../Video Card/VideoCard";
+import errorImg from '../../images/error.webp'
 
 export default function Home() {
 
@@ -13,6 +14,7 @@ export default function Home() {
 		menuState,
 		darkMode,
 		ytVideos,
+		reload,
 	} = context
 
 	// Fetches the video and reels before loading the page
@@ -51,6 +53,13 @@ export default function Home() {
 					publishedAt={data?.snippet?.publishedAt}
 				/>
 			})}
+			{!ytVideos &&
+				<div className="ShowErrorPage">
+					<img src={errorImg} width={200} height={150} alt=""/>
+					<p>The request cannot be completed because you have exceeded your Api limit!</p>
+					<button onClick={reload}>Retry</button>
+				</div>
+			}
 		</div>
 	</div>
 }

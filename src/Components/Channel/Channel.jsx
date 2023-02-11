@@ -6,11 +6,11 @@ import {useParams} from "react-router-dom";
 export default function Channel() {
 	let {id} = useParams();
 
-	const channelUrl = `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${id}&key=AIzaSyBv7Ox-8bFX1sDtqfprHOmfOhvqJMuvicE`
-
 	const [channel, setChannel] = useState([])
 	const context = useContext(ytContext);
-	const {darkMode, menuState, convertDate, randomNum} = context;
+	const {darkMode, menuState, convertDate, randomNum, API1} = context;
+
+	const channelUrl = `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${id}&key=${API1}`
 
 	useEffect(() => {
 		return () => {
@@ -22,7 +22,7 @@ export default function Channel() {
 				.catch(error => console.log(error.message));
 		}
 		// eslint-disable-next-line
-	}, []);
+	}, [id]);
 
 	const dateString = channel?.snippet?.publishedAt
 	const date = new Date(dateString)
@@ -46,7 +46,7 @@ export default function Channel() {
 				</div>
 			</div>
 			<div className="sub-btn">
-				<button>Subscribe</button>
+
 			</div>
 		</div>
 

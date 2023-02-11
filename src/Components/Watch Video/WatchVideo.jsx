@@ -7,14 +7,20 @@ import SideVideoBar from "../Side Video Bar/SideVideoBar";
 import Comments from "../Comments/Comments";
 import ReactPlayer from "react-player";
 import default_img from '../../images/default-img.png'
-import {useParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {ADD_SUBSCRIPTION} from "../../actions/subs";
 
 export default function WatchVideo() {
+	const location = useLocation()
 	let {id} = useParams();
+	const {data} = location.state
 
 	const context = useContext(ytContext);
 	const {
 		fetchUserVideoAndComments,
+		setIsSubscribed,
+		isSubscribed,
 		setMenuState,
 		fetchVideos,
 		convertDate,
@@ -24,42 +30,39 @@ export default function WatchVideo() {
 		darkMode,
 		ytVideos,
 		comments,
-		// API1,
-		// API2,
-		// API3,
-		API4
 	} = context
-
-	const [showMore, setShowMore] = useState(false);
-	const dateString = userVideo?.snippet?.publishedAt
-
-	
-
-
-	const date = new Date(dateString)
-	let dateNew = `${date.getFullYear()}-${date.getMonth() === 0 ? date.getMonth() + 1 : date.getMonth()}-${date.getDay() === 0 ? date.getDay() + 1 : date.getDay()}`
 
 	useEffect(() => {
 		return () => {
 			setMenuState(false)
-			document.title = userVideo?.snippet?.localized?.title
 			fetchUserVideoAndComments(id)
 			fetchVideos('music')
-
 		}
 		// eslint-disable-next-line
 	}, [id]);
 
+	useEffect(() => {
+		return () => {
+			setIsSubscribed(true)
+		};
+	}, [id]);
 
-	
+
+	const dispatch = useDispatch()
+
+	const [showMore, setShowMore] = useState(false);
+
+	const dateString = userVideo?.snippet?.publishedAt
+	const date = new Date(dateString)
+	let dateNew = `${date.getFullYear()}-${date.getMonth() === 0 ? date.getMonth() + 1 : date.getMonth()}-${date.getDay() === 0 ? date.getDay() + 1 : date.getDay()}`
 
 
 	return <div className={"WatchVideo " + (darkMode && "dark ") + (menuState && " active ")}>
 		<div className="left-wrapper">
 			<div className="video-player">
 				<ReactPlayer
-					key={`https://www.youtube.com/watch?v=` + userVideo?.id}
 					url={`https://www.youtube.com/watch?v=` + id}
+					key={id}
 					width={900}
 					height={500}
 					controls={true}
@@ -85,7 +88,11 @@ export default function WatchVideo() {
 					<span><p className="subs">{randomNum(1, 10)} Subscribers</p></span>
 				</div>
 				<div className="subscribe-btn">
-					<button>Subscribe</button>
+					<button onClick={() => {
+						if (isSubscribed) dispatch(ADD_SUBSCRIPTION(data))
+						setIsSubscribed(false)
+					}}>{isSubscribed ? 'Subscribe' : 'Subscribed'}
+					</button>
 				</div>
 				<div className="like-unlike-btn">
 					<button><FontAwesomeIcon style={{marginRight: "5px"}} size={'xl'}

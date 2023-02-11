@@ -1,0 +1,45 @@
+.History {
+  //border: 1px solid red;
+  position: relative;
+  left: 100px;
+  width: 93.4vw;
+  height: 87.8vh;
+  padding: 0 50px;
+
+  .Title {
+    color: black;
+    font-weight: 500;
+    font-size: 22px;
+    margin-top: 90px;
+  }
+
+  .watchHistory-container {
+    width: 600px;
+
+    button {
+      position: absolute;
+      right: 140px;
+      bottom: 30px;
+      font-size: 18px;
+      border: 1px solid lightgray;
+      padding: 8px 13px;
+      border-radius: 17px;
+      font-weight: 600;
+      background-color: black;
+      color: white;
+      cursor: pointer;
+      margin: 2rem 0 0;
+    }
+  }
+
+  &.active {
+    left: 248px;
+    width: 83.7vw;
+  }
+
+  &.dark {
+    .Title {
+      color: white;
+    }
+  }
+}

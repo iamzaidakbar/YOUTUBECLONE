@@ -5,6 +5,7 @@
   height: calc(100vh - 65px);
   padding: 0 12px;
   background-color: white;
+  overflow: scroll;
 
   .sideMenu-links {
     width: 100%;
@@ -22,7 +23,7 @@
     > li {
       width: 30%;
       list-style-type: none;
-      padding:20px 25px;
+      padding: 20px 25px;
       margin-bottom: 5px;
       border-radius: 13px;
       display: flex;
@@ -45,6 +46,17 @@
       }
     }
 
+    .subscriptions-heading {
+      color: black;
+      font-size: 20px;
+      margin-top: 15px;
+      margin-left: 7px;
+    }
+
+    .subscriptions-heading:hover {
+      background-color: transparent;
+    }
+
     .icon-active {
       background-color: #EFF0F4;
     }
@@ -64,14 +76,25 @@
           color: white;
         }
       }
+
       > li:hover {
         background-color: #303030;
       }
+
       .icon-active {
         background-color: #303030;
       }
+
       .line {
         border: 0.5px solid #3f3f3f;
+      }
+
+      .subscriptions-heading {
+        color: white;
+      }
+
+      .subscriptions-heading:hover {
+        background-color: transparent;
       }
     }
   }
@@ -80,21 +103,21 @@
     width: calc(100vw - 86vw);
 
     .sideMenu-links {
-       > li {
-         width: 88%;
-         display: block;
-         padding:12px 13px;
-         margin-bottom: 0;
+      > li {
+        width: 88%;
+        display: block;
+        padding: 12px 13px;
+        margin-bottom: 0;
 
-         .sideMenu-icons {
-           margin-right: 20px;
-         }
+        .sideMenu-icons {
+          margin-right: 20px;
+        }
 
-         .link-text {
-           font-size: 16px;
-         }
+        .link-text {
+          font-size: 16px;
+        }
 
-       }
+      }
 
       .icon-active {
         .link-text {
@@ -103,4 +126,8 @@
       }
     }
   }
+}
+
+.SideMenu::-webkit-scrollbar {
+  display: none;
 }

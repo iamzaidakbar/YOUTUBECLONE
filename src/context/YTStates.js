@@ -2,8 +2,9 @@ import ytContext from "./ytContext";
 import {useState} from "react";
 
 const YTStates = (props) => {
-	const [darkMode, setDarkMode] = useState(false);
+	const [darkMode, setDarkMode] = useState(true);
 	const [menuState, setMenuState] = useState(true);
+	const [isSubscribed, setIsSubscribed] = useState(true);
 	const [query, setQuery] = useState('');
 	const [videoID, setVideoID] = useState('');
 	const [reels, setReels] = useState([])
@@ -12,16 +13,12 @@ const YTStates = (props) => {
 	const [userVideo, setUserVideo] = useState([])
 	const [videoId, setVideoId] = useState('');
 
-
-	const API1 = 'AIzaSyBv7Ox-8bFX1sDtqfprHOmfOhvqJMuvicE'
-	const API2 = 'AIzaSyDJMKG0ydBUCx9HFoko_3cnhhKNqFB0M1I'
-	const API3 = 'AIzaSyC3H1D1UYff8f9GKXw3tO9kvCnM-JYPIEo'
-	const API4 = 'AIzaSyB1TIUkr-Gc8Jd-Xjagi-FrY0Y7AURFA-w'
+	const API1 = 'AIzaSyALmU8uC4I8O7m7cRjQb-9i0TipNnUpcAA'
 
 
 	// Url for videos and reels
-	const VIDEOS_URL1 = `https://www.googleapis.com/youtube/v3/search?key=${API1}&type=videos&part=snippet&maxResults=100&q=`
-	const REELS_URL2 = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=theboysmeme&type=reel&key=${API2}&maxResults=5`
+	const VIDEOS_URL1 = `https://www.googleapis.com/youtube/v3/search?key=${API1}&type=videos&part=snippet&order=date&maxResults=100&q=`
+	const REELS_URL2 = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=trendingmemes&order=date&type=reel&key=${API1}&maxResults=5`
 
 	// Short Links
 	const shortLinks = ['ALL', 'Trending', 'Music', 'Gaming', 'Freestyle Rap', 'PUBG Mobile', 'BGMI', 'Football', 'AI', 'Movies', 'Fashion & Beauty', 'News',]
@@ -37,8 +34,8 @@ const YTStates = (props) => {
 	}
 
 	const fetchUserVideoAndComments = (id) => {
-		const WATCHVIDEO_URL = `https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${API3}&part=snippet,statistics&fields=items(id,snippet,statistics)`
-		const COMMENTS_URL = `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${id}&key=${API4}&maxResults=100`
+		const WATCHVIDEO_URL = `https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${API1}&part=snippet,statistics&fields=items(id,snippet,statistics)`
+		const COMMENTS_URL = `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${id}&key=${API1}&maxResults=100`
 		const video = fetch(WATCHVIDEO_URL).then(res => res.json())
 		const comments = fetch(COMMENTS_URL).then(res => res.json())
 
@@ -69,34 +66,40 @@ const YTStates = (props) => {
 		return n;
 	}
 
+	// Reloads
+	function reload() {
+		window.location.reload(true)
+	}
+
 
 	return (<ytContext.Provider
-			value={{
-				fetchUserVideoAndComments,
-				setMenuState,
-				convertDate,
-				fetchVideos,
-				setDarkMode,
-				setVideoId,
-				shortLinks,
-				setVideoID,
-				menuState,
-				userVideo,
-				randomNum,
-				darkMode,
-				setQuery,
-				ytVideos,
-				comments,
-				setReels,
-				videoID,
-				videoId,
-				reels,
-				query,
-				API1,
-				API2,
-				API3
-			}}>
-			{props.children}
-		</ytContext.Provider>)
+		value={{
+			fetchUserVideoAndComments,
+			setIsSubscribed,
+			isSubscribed,
+			setMenuState,
+			convertDate,
+			fetchVideos,
+			setDarkMode,
+			setVideoId,
+			shortLinks,
+			setVideoID,
+			menuState,
+			userVideo,
+			randomNum,
+			darkMode,
+			setQuery,
+			ytVideos,
+			comments,
+			setReels,
+			videoID,
+			videoId,
+			reload,
+			reels,
+			query,
+			API1
+		}}>
+		{props.children}
+	</ytContext.Provider>)
 }
 export default YTStates;

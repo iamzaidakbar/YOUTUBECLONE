@@ -1,12 +1,16 @@
 import './SideMenu.scss'
 import {Link, useLocation} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCheckDouble, faHouse, faPlayCircle, faRecycle, faStopwatch, faVideo} from "@fortawesome/free-solid-svg-icons";
+import {faHouse, faRecycle, faVideo} from "@fortawesome/free-solid-svg-icons";
 import {useContext} from "react";
 import ytContext from "../../context/ytContext";
+import {useSelector} from "react-redux";
+import Subscriptions from "../Subscriptions/Subscriptions";
 
 export default function SideMenu() {
 	let location = useLocation();
+
+	const subscriptions = useSelector(state => state.addToSubscriptions)
 
 	const context = useContext(ytContext);
 	const {darkMode, menuState} = context
@@ -25,18 +29,19 @@ export default function SideMenu() {
 					<li className={location.pathname === '/history' ? 'icon-active' : ""}><Link
 						to={'/history'}><FontAwesomeIcon className="sideMenu-icons" size={'lg'} icon={faRecycle}/><span
 						className="link-text">History</span></Link></li>
-					<li className={location.pathname === '/yourvideos' ? 'icon-active' : ""}><Link
-						to={'/yourvideos'}><FontAwesomeIcon className="sideMenu-icons" size={'lg'} icon={faPlayCircle}/>
-						<span className="link-text">Your videos</span></Link></li>
-					<li className={location.pathname === '/watchlater' ? 'icon-active' : ""}><Link
-						to={'/watchlater'}><FontAwesomeIcon className="sideMenu-icons" size={'lg'} icon={faStopwatch}/>
-						<span className="link-text">Watch later</span></Link></li>
-					<li className={location.pathname === '/likedvideos' ? 'icon-active' : ""}><Link to={'/likedvideos'}><FontAwesomeIcon
-						className="sideMenu-icons" size={'lg'} icon={faCheckDouble}/> <span className="link-text">Liked videos</span></Link>
-					</li>
+					<li className='subscriptions-heading'>Subscriptions</li>
 					<span className="line"></span>
 				</>
 			}
 		</ul>
+		{subscriptions &&
+			subscriptions.map(data => {
+				return <Subscriptions
+					key={data?.snippet?.channelId}
+					channelId={data?.snippet?.channelId}
+					img_url={data?.snippet?.thumbnails?.high?.url}
+					channelName={data?.snippet?.channelTitle}/>
+			})
+		}
 	</div>
 }
