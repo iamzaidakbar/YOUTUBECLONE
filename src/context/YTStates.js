@@ -2,7 +2,7 @@ import ytContext from "./ytContext";
 import {useState} from "react";
 
 const YTStates = (props) => {
-	const [darkMode, setDarkMode] = useState(true);
+	const [darkMode, setDarkMode] = useState(false);
 	const [menuState, setMenuState] = useState(true);
 	const [isSubscribed, setIsSubscribed] = useState(true);
 	const [query, setQuery] = useState('');
