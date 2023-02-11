@@ -6,7 +6,7 @@ import Reel from "../Reel/Reel";
 export default function Shorts() {
 
 	const context = useContext(ytContext);
-	const {darkMode, reels, reload} = context
+	const {darkMode, reels} = context
 
 	return <div className={"Shorts " + (darkMode && "dark")}>
 		{reels && reels.map(data => {

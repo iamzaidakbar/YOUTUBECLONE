@@ -45,6 +45,7 @@ export default function WatchVideo() {
 		return () => {
 			setIsSubscribed(true)
 		};
+		// eslint-disable-next-line
 	}, [id]);
 
 
