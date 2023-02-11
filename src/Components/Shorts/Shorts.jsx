@@ -10,14 +10,12 @@ export default function Shorts() {
 
 	return <div className={"Shorts " + (darkMode && "dark")}>
 		{reels && reels.map(data => {
-			if (data?.id?.videoId) {
-				return <Reel
-					key={data?.id?.videoId}
-					videoID={data?.id?.videoId}
-					username={data?.snippet?.channelTitle}
-					src={data?.snippet?.thumbnails?.default?.url}
-				/>
-			}
+			return <Reel
+				key={data?.id?.videoId}
+				videoID={data?.id?.videoId}
+				username={data?.snippet?.channelTitle}
+				src={data?.snippet?.thumbnails?.default?.url}
+			/>
 		})}
 	</div>
 }
