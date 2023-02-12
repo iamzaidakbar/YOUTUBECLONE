@@ -40,7 +40,7 @@ export default function Home() {
 			})}
 		</div>
 		<div className="lower-section">
-			{ytVideos.map(data => {
+			{ytVideos && ytVideos.map(data => {
 				return <VideoCard
 					data={data}
 					key={data?.id?.videoId}
