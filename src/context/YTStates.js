@@ -13,7 +13,7 @@ const YTStates = (props) => {
 	const [userVideo, setUserVideo] = useState([])
 	const [videoId, setVideoId] = useState('');
 
-	const API1 = 'AIzaSyALmU8uC4I8O7m7cRjQb-9i0TipNnUpcAA'
+	const API1 = 'AIzaSyC3H1D1UYff8f9GKXw3tO9kvCnM-JYPIEo'
 
 
 	// Url for videos and reels
