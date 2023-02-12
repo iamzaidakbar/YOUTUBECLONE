@@ -26,7 +26,6 @@ function App() {
 			<BrowserRouter>
 				<Navbar/>
 				<SideMenu/>
-				<Home/>
 				<Routes>
 					<Route exact path="/" element={<Home/>}/>
 					<Route exact path="/shorts" element={<Shorts/>}/>
