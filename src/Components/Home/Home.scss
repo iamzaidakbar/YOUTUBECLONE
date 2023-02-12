@@ -11,10 +11,11 @@
   .upper-section {
     width: 100%;
     position: fixed;
+    top: 60px;
     left: 100px;
     display: flex;
     align-items: center;
-    padding: 17px 13px;
+    padding: 11px 13px;
     background-color: white;
     z-index: 2;
 
@@ -23,7 +24,7 @@
       border: none;
       border-radius: 8px;
       font-weight: 500;
-      font-size: 16px;
+      font-size: 14px;
       background-color: #f2f2f2;
       color: black;
       margin-right: 12px;
@@ -109,7 +110,7 @@
   }
 
   &.active {
-    left: calc(100vw - 85vw);
+    left: calc(100vw - 84vw);
     width: 80.6vw;
 
     .upper-section {

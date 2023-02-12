@@ -64,8 +64,8 @@ export default function WatchVideo() {
 				<ReactPlayer
 					url={`https://www.youtube.com/watch?v=` + id}
 					key={id}
-					width={900}
-					height={500}
+					width={800}
+					height={470}
 					controls={true}
 					playing={true}
 					config={{

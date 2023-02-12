@@ -1,11 +1,11 @@
 .VideoCard {
   margin-top: 4rem;
-  width: 325px;
-  margin-right: 17px;
+  width: 292px;
+  margin-right: 12px;
 
   .thumbnail-wrapper {
-    height: 190px;
-    width: 320px;
+    height: 170px;
+    width: 290px;
     overflow: hidden;
     border-radius: 17px;
     position: relative;
@@ -84,12 +84,12 @@
   }
 
   &.active {
-    width: 296px;
+    width: 272px;
     margin-right: 0;
 
     .thumbnail-wrapper {
-      height: 160px;
-      width: 275px;
+      height: 145px;
+      width: 255px;
     }
   }
 }

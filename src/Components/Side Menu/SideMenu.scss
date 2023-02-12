@@ -1,6 +1,6 @@
 .SideMenu {
   position: fixed;
-  top: 65px;
+  top: 55px;
   width: 5vw;
   height: calc(100vh - 65px);
   padding: 0 12px;
@@ -33,7 +33,7 @@
       > * {
         text-decoration: none;
         color: black;
-        font-size: 17px;
+        font-size: 15px;
         font-weight: 300;
       }
 
@@ -100,13 +100,13 @@
   }
 
   &.active {
-    width: calc(100vw - 86vw);
+    width: calc(100vw - 85vw);
 
     .sideMenu-links {
       > li {
         width: 88%;
         display: block;
-        padding: 12px 13px;
+        padding: 10px 12px;
         margin-bottom: 0;
 
         .sideMenu-icons {
@@ -121,7 +121,7 @@
 
       .icon-active {
         .link-text {
-          font-weight: 600;
+          font-weight: 500;
         }
       }
     }
