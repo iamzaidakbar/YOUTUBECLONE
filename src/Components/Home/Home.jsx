@@ -1,5 +1,5 @@
 import './Home.scss'
-import {useContext, useEffect} from "react";
+import {useContext} from "react";
 import ytContext from "../../context/ytContext";
 import VideoCard from "../Video Card/VideoCard";
 import errorImg from '../../images/error.webp'
@@ -17,13 +17,6 @@ export default function Home() {
 		reload,
 	} = context
 
-	// Fetches the video and reels before loading the page
-	useEffect(() => {
-		return () => {
-			fetchVideos('trailers')
-		};
-		// eslint-disable-next-line
-	}, []);
 
 	// Generated the random id
 	function generateId() {

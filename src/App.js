@@ -1,6 +1,6 @@
 import './App.scss';
 import Navbar from "./Components/Navbar/Navbar";
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import ytContext from "./context/ytContext";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import SideMenu from "./Components/Side Menu/SideMenu";
@@ -12,12 +12,21 @@ import History from "./Components/History/History";
 
 function App() {
 	const context = useContext(ytContext);
-	const {darkMode} = context
+	const {darkMode, fetchVideos} = context
+
+	// Fetches the video and reels before loading the page
+	useEffect(() => {
+		return () => {
+			fetchVideos('trailers').then(r => r)
+		};
+		// eslint-disable-next-line
+	}, []);
 
 	return (<div className={"App " + (darkMode && "dark")}>
 			<BrowserRouter>
 				<Navbar/>
 				<SideMenu/>
+				<Home/>
 				<Routes>
 					<Route exact path="/" element={<Home/>}/>
 					<Route exact path="/shorts" element={<Shorts/>}/>
