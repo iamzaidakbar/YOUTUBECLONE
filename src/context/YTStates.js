@@ -23,12 +23,12 @@ const YTStates = (props) => {
 	// Short Links
 	const shortLinks = ['ALL', 'Trending', 'Music', 'Gaming', 'Freestyle Rap', 'PUBG Mobile', 'BGMI', 'Football', 'AI', 'Movies', 'Fashion & Beauty', 'News',]
 
-	const fetchVideos = (query) => {
-		const videos = fetch(VIDEOS_URL1 + query, {
+	const fetchVideos = async (query) => {
+		const videos = await fetch(VIDEOS_URL1 + query, {
 			method: 'GET',
 			mode: 'cors',
 		}).then(res => res.json())
-		const reels = fetch(REELS_URL2, {
+		const reels = await fetch(REELS_URL2, {
 			method: 'GET',
 			mode: 'cors',
 		}).then(res => res.json())
@@ -39,14 +39,14 @@ const YTStates = (props) => {
 		})
 	}
 
-	const fetchUserVideoAndComments = (id) => {
+	const fetchUserVideoAndComments = async (id) => {
 		const WATCHVIDEO_URL = `https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${API1}&part=snippet,statistics&fields=items(id,snippet,statistics)`
 		const COMMENTS_URL = `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${id}&key=${API1}&maxResults=100`
-		const video = fetch(WATCHVIDEO_URL, {
+		const video = await fetch(WATCHVIDEO_URL, {
 			method: 'GET',
 			mode: 'cors',
 		}).then(res => res.json())
-		const comments = fetch(COMMENTS_URL, {
+		const comments = await fetch(COMMENTS_URL, {
 			method: 'GET',
 			mode: 'cors',
 		}).then(res => res.json())
