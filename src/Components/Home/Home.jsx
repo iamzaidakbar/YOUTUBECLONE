@@ -6,14 +6,6 @@ import errorImg from '../../images/error.webp'
 
 export default function Home() {
 
-	// Fetches the video and reels before loading the page
-	useEffect(() => {
-		return () => {
-			fetchVideos('trailers')
-		};
-		// eslint-disable-next-line
-	}, []);
-
 	// Context Api
 	const context = useContext(ytContext);
 	const {
@@ -24,6 +16,14 @@ export default function Home() {
 		ytVideos,
 		reload,
 	} = context
+
+	// Fetches the video and reels before loading the page
+	useEffect(() => {
+		return () => {
+			fetchVideos('trailers')
+		};
+		// eslint-disable-next-line
+	}, []);
 
 	// Generated the random id
 	function generateId() {

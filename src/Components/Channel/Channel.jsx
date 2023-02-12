@@ -14,7 +14,10 @@ export default function Channel() {
 
 	useEffect(() => {
 		return () => {
-			fetch(channelUrl)
+			fetch(channelUrl, {
+				method: 'GET',
+				mode: 'cors',
+			})
 				.then(response => response.json())
 				.then(data => {
 					setChannel(data.items[0])
